@@ -25,7 +25,12 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "arithmetic",
+    "mean",
+    "moving",
+    "window",
+    "arithmetic mean"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/mmean/issues"
