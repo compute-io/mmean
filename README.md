@@ -2,7 +2,7 @@ mmean
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Compute module.
+> Computes the arithmetic mean of values in a window moving through a numeric array.
 
 
 ## Installation
