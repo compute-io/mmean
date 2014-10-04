@@ -30,7 +30,8 @@
     "mean",
     "moving",
     "window",
-    "arithmetic mean"
+    "arithmetic mean",
+    "array"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/mmean/issues"

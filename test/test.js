@@ -73,13 +73,27 @@ describe( 'compute-mmean', function tests() {
 
 	});
 
+	it( 'should throw an error if the window size is smaller than the array size', function test() {
+
+		var testdata = [3,5,6,8,7,5,4,3,2,5,6,7,8,5,4];
+
+		expect( testValue( 20 ) ).to.throw( TypeError );
+
+		function testValue( value ) {
+			return function() {
+				mmean( testdata , value);
+			}
+		}
+
+	});
+
 	it( 'should compute the mean in the window', function test() {
 		var data, expected;
 
 		// Simulate some data
 		data = [ 2, 1, 3, 5, 7, 0, 2];
 
-		// Expected values of sum in the moving window
+		// Expected values of mean in the moving window
 		expected = [2, 3, 5, 4, 3];
 
 		var testOut = mmean ( data , 3 );

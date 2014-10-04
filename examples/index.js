@@ -7,7 +7,7 @@ for ( var i = 0; i < data.length; i++ ) {
 }
 
 // Give function array of data and desired window size
-var outArr = mmean( data, 7 );
+var outArr = mmean( data, 5 );
 
 for ( i = 0; i < outArr.length; i++) {
 	console.log( outArr[i] );
