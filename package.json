@@ -1,6 +1,6 @@
 {
   "name": "compute-mmean",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Computes a moving arithmetic mean over a numeric array.",
   "author": {
     "name": "Rebekah Smith",
