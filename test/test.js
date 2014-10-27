@@ -46,7 +46,7 @@ describe( 'compute-mmean', function tests() {
 
 	});
 
-	it( 'should throw an error if not provided a positive, numeric, integer window size', function test() {
+	it( 'should throw an error if provided a window size which is not a positive integer', function test() {
 		var values = [
 			'5',
 			2.7,
@@ -60,47 +60,45 @@ describe( 'compute-mmean', function tests() {
 			[]
 		];
 
-		var testdata = [3,5,6,8,7,5,4,3,2,5,6,7,8,5,4]
-
 		for ( var i = 0; i < values.length; i++ ) {
 			expect( badValue( values[i] ) ).to.throw( TypeError );
 		}
 		function badValue( value ) {
 			return function() {
-				mmean( testdata , value );
+				mmean( [], value );
 			};
 		}
 
 	});
 
-	it( 'should throw an error if the window size is smaller than the array size', function test() {
+	it( 'should throw an error if the window size is greater than the array size', function test() {
+		var data = [ 1, 2, 3 ];
 
-		var testdata = [3,5,6,8,7,5,4,3,2,5,6,7,8,5,4];
+		expect( foo ).to.throw( TypeError );
 
-		expect( testValue( 20 ) ).to.throw( TypeError );
-
-		function testValue( value ) {
-			return function() {
-				mmean( testdata , value);
-			}
+		function foo() {
+			mmean( data, data.length+1 );
 		}
 
 	});
 
-	it( 'should compute the mean in the window', function test() {
-		var data, expected;
+	it( 'should compute a moving mean', function test() {
+		var data, actual, expected, W;
 
-		// Simulate some data
+		// Set the window size:
+		W = 3;
+
+		// Simulate some data...
 		data = [ 2, 1, 3, 5, 7, 0, 2];
 
-		// Expected values of mean in the moving window
-		expected = [2, 3, 5, 4, 3];
+		// Expected values:
+		expected = [ 2, 3, 5, 4, 3 ];
 
-		var testOut = mmean ( data , 3 );
+		// Actual values:
+		actual = mmean( data , W );
 
-		for ( var i = 0; i < expected.length; i++ ) {
-			assert.strictEqual( testOut[i], expected[i] );
-		}
+		assert.strictEqual( actual.length, data.length-W+1 );
+		assert.deepEqual( actual, expected );
 	});
 
-}); // end test descriptions
+});

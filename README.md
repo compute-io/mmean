@@ -1,8 +1,8 @@
-mmean
+Moving Mean
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes the arithmetic mean of values in a window moving through a numeric array.
+> Computes a moving arithmetic mean (sliding window average) over a numeric array.
 
 
 ## Installation
@@ -22,22 +22,36 @@ To use the module,
 var mmean = require( 'compute-mmean' );
 ```
 
+#### mmean( arr, window )
+
+Slides a `window` over a numeric `array` to compute a moving mean.
+
+``` javascript
+var data = [ 1, 2, 3, 4, 5 ];
+
+mmean( data, 2 );
+// returns [ 1.5, 2.5, 3.5, 4.5 ]
+```
+
+Note: the returned `array` has length `L - W + 1`, where `L` is the length of the input `array` and `W` is the `window` size. 
+
 
 ## Examples
 
 ``` javascript
+var mmean = require( 'compute-mmean' );
+
+// Simulate some data...
 var data = new Array( 50 );
 
 for ( var i = 0; i < data.length; i++ ) {
-	data[i] = Math.random() * 100;
+	data[ i ] = Math.random() * 100;
 }
 
-// Give function array of data and desired window size
-var outArr = mmean( data, 5 );
+// Compute the moving mean:
+var arr = mmean( data, 7 );
 
-for ( i = 0; i < outArr.length; i++) {
-	console.log( outArr[i] );
-}
+console.log( arr.join( '\n' ) );
 ```
 
 To run the example code from the top-level application directory,
@@ -71,7 +85,7 @@ $ make test-cov
 Istanbul creates a `./reports/coverage` directory. To access an HTML version of the report,
 
 ``` bash
-$ open reports/coverage/lcov-report/index.html
+$ make view-cov
 ```
 
 
