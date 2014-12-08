@@ -29,7 +29,7 @@ Slides a `window` over a numeric `array` to compute a moving mean.
 ``` javascript
 var data = [ 1, 2, 3, 4, 5 ];
 
-mmean( data, 2 );
+var arr = mmean( data, 2 );
 // returns [ 1.5, 2.5, 3.5, 4.5 ]
 ```
 
