@@ -1,3 +1,5 @@
+'use strict';
+
 var mmean = require( './../lib' );
 
 // Simulate some data...

@@ -1,3 +1,5 @@
+/* global describe, it, require */
+'use strict';
 
 // MODULES //
 
@@ -17,7 +19,6 @@ var expect = chai.expect,
 // TESTS //
 
 describe( 'compute-mmean', function tests() {
-	'use strict';
 
 	it( 'should export a function', function test() {
 		expect( mmean ).to.be.a( 'function' );
