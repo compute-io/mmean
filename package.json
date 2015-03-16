@@ -1,7 +1,7 @@
 {
   "name": "compute-mmean",
   "version": "1.0.3",
-  "description": "Computes a moving arithmetic mean over a numeric array.",
+  "description": "Computes a moving arithmetic mean over an array.",
   "author": {
     "name": "Rebekah Smith",
     "email": "rebekahjs17@gmail.com"
@@ -48,8 +48,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "1.x.x",
-    "mocha": "1.x.x",
+    "chai": "2.x.x",
+    "mocha": "2.x.x",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
