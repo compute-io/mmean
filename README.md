@@ -2,7 +2,7 @@ Moving Mean
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes a moving arithmetic mean (sliding window average) over a numeric array.
+> Computes a moving arithmetic mean (sliding window average) over an array.
 
 
 ## Installation
@@ -16,21 +16,58 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
-To use the module,
-
 ``` javascript
 var mmean = require( 'compute-mmean' );
 ```
 
-#### mmean( arr, window )
+#### mmean( arr, window[, options] )
 
-Slides a `window` over a numeric `array` to compute a moving mean.
+Slides a `window` over a numeric `array` to compute a moving mean. For numeric `arrays`,
 
 ``` javascript
 var data = [ 1, 2, 3, 4, 5 ];
 
 var arr = mmean( data, 2 );
 // returns [ 1.5, 2.5, 3.5, 4.5 ]
+```
+
+The function accepts two `options`:
+
+*  __copy__: `boolean` indicating whether to return a new `array` containing the computed means. Default: `true`.
+*  __accessor__: accessor `function` for accessing numerical values in object `arrays`.
+
+To mutate the input `array` (e.g. when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
+
+``` javascript
+var arr = [ 1, 2, 3, 4, 5 ];
+
+var values = mmean( arr, 2, {
+	'copy': false
+});
+//returns [ 1.5, 2.5, 3.5, 4.5 ]
+
+console.log( arr === values );
+//returns true
+```
+
+For non-numeric `arrays`, provide an accessor `function` for accessing numeric `array` values.
+
+``` javascript
+var arr = [
+	{'x':1},
+	{'x':2},
+	{'x':3},
+	{'x':4}
+];
+
+function getValue( d ) {
+	return d.x;
+}
+
+var values = mmean( arr, 2, {
+	'accessor': getValue
+});
+// returns [ 1.5, 2.5, 3.5 ]
 ```
 
 Note: the returned `array` has length `L - W + 1`, where `L` is the length of the input `array` and `W` is the `window` size. 
@@ -41,17 +78,13 @@ Note: the returned `array` has length `L - W + 1`, where `L` is the length of th
 ``` javascript
 var mmean = require( 'compute-mmean' );
 
-// Simulate some data...
 var data = new Array( 50 );
-
 for ( var i = 0; i < data.length; i++ ) {
 	data[ i ] = Math.random() * 100;
 }
 
-// Compute the moving mean:
-var arr = mmean( data, 7 );
-
-console.log( arr.join( '\n' ) );
+var values = mmean( data, 7 );
+console.log( values.join( '\n' ) );
 ```
 
 To run the example code from the top-level application directory,
