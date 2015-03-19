@@ -129,7 +129,7 @@ $ make view-cov
 
 ## Copyright
 
-Copyright &copy; 2014. Rebekah Smith.
+Copyright &copy; 2014-2015. Rebekah Smith.
 
 
 [npm-image]: http://img.shields.io/npm/v/compute-mmean.svg
