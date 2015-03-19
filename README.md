@@ -22,12 +22,12 @@ var mmean = require( 'compute-mmean' );
 
 #### mmean( arr, window[, options] )
 
-Slides a `window` over a numeric `array` to compute a moving mean. For numeric `arrays`,
+Slides a `window` over an `array` to compute a moving mean. For numeric `arrays`,
 
 ``` javascript
 var data = [ 1, 2, 3, 4, 5 ];
 
-var arr = mmean( data, 2 );
+var values = mmean( data, 2 );
 // returns [ 1.5, 2.5, 3.5, 4.5 ]
 ```
 
@@ -39,14 +39,14 @@ The function accepts two `options`:
 To mutate the input `array` (e.g. when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
 
 ``` javascript
-var arr = [ 1, 2, 3, 4, 5 ];
+var data = [ 1, 2, 3, 4, 5 ];
 
-var values = mmean( arr, 2, {
+var values = mmean( data, 2, {
 	'copy': false
 });
 //returns [ 1.5, 2.5, 3.5, 4.5 ]
 
-console.log( arr === values );
+console.log( data === values );
 //returns true
 ```
 
